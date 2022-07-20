@@ -73,7 +73,7 @@ export default {
           name: '赵六',
           address: '上海市普陀区金沙江路 1516 号',
           sex: '男'
-        }
+        },
       ]
     }
   },
