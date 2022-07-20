@@ -2,7 +2,7 @@
   <button
     @click="change"
     :disabled="disabled || loading"
-    class="yang-button"
+    class="liu-button"
     :style="[minWidthCss]"
     :class="[theme, isRound, isBorder, isSize, blockCss]"
   >
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     theme() {
-      return this.type ? `yang-button-${this.type}` : ''
+      return this.type ? `liu-button-${this.type}` : ''
     },
     isRound() {
       return this.round ? 'is-round' : ''
@@ -56,7 +56,7 @@ export default {
       return this.border ? 'is-border' : ''
     },
     isSize() {
-      return this.size ? `yang-button-${this.size}` : ''
+      return this.size ? `liu-button-${this.size}` : ''
     },
     minWidthCss() {
       if (!this.minWidth) return ''
@@ -69,7 +69,7 @@ export default {
       return this.suffix ? `icon-${this.suffix}` : ''
     },
     blockCss() {
-      return this.block ? 'yang-button-block' : ''
+      return this.block ? 'liu-button-block' : ''
     }
   },
   methods: {
@@ -81,5 +81,117 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './button.scss';
+$primary: #409eff !important;
+$danger: #e6a23c !important;
+$success: #00d100 !important;
+$warning: #f56c6c !important;
+
+.liu-button {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dcdfe6;
+  height: 40px;
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #606266;
+  cursor: pointer;
+
+  + .liu-button {
+    margin-left: 14px;
+    margin-bottom: 10px;
+  }
+
+  > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-prefix {
+    margin-right: 10px;
+  }
+  .icon-suffix {
+    margin-left: 10px;
+  }
+}
+.liu-button-medium {
+  height: 38px;
+}
+.liu-button-small {
+  padding: 0 15px;
+  height: 32px;
+  font-size: 12px;
+}
+.liu-button-mini {
+  padding: 0 15px;
+  height: 28px;
+  font-size: 12px;
+}
+.liu-button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.liu-button-primary {
+  background-color: $primary;
+  border-color: $primary;
+  color: #fff;
+  &.is-border {
+    background-color: transparent;
+    color: $primary;
+  }
+}
+.liu-button-success {
+  background-color: $success;
+  border-color: $success;
+  color: #fff;
+  &.is-border {
+    background-color: transparent;
+    color: $success;
+  }
+}
+.liu-button-danger {
+  background-color: $danger;
+  border-color: $danger;
+  color: #fff;
+  &.is-border {
+    background-color: transparent;
+    color: $danger;
+  }
+}
+.liu-button-warning {
+  background-color: $warning;
+  border-color: $warning;
+  color: #fff;
+  &.is-border {
+    background-color: transparent;
+    color: $warning;
+  }
+}
+
+/*** 圆角 */
+.is-round {
+  border-radius: 100px;
+}
+/**块级按钮*/
+.liu-button-block {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0;
+}
+/**loading动画加载*/
+.icon-loading {
+  animation: loading 2s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 </style>
