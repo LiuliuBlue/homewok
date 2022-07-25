@@ -1,10 +1,12 @@
 <template>
-  <el-form ref="form" :model="form" label-width="80px">
-    <el-form-item label="活动名称">
-      <el-input v-model="form.name"></el-input>
-    </el-form-item>
-     <el-form-item label="活动地址">
-      <el-input v-model="form.name"></el-input>
+  <el-form ref="form" :model="field" :rules="rules" label-width="80px">
+    <el-form-item
+      v-for="item in item"
+      :key="item.label"
+      :label="item.label"
+      :prop="item.prop"
+    >
+      <el-input v-model="field[item.prop]"></el-input>
     </el-form-item>
   </el-form>
 </template>
@@ -12,25 +14,24 @@
 <script>
 export default {
   name: 'liuForm',
-  data() {
-    return {
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      }
+  props: {
+    item: {
+      type: Array,
+      default: () => []
+    },
+    field: {
+      type: Object,
+      default: () => ({})
+    },
+    rules: {
+      type: Object,
+      default: () => ({})
     }
   },
-  methods: {
-    onSubmit() {
-      console.log('submit!')
-    }
-  }
+  data() {
+    return {}
+  },
+  methods: {}
 }
 </script>
 

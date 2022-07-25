@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lit/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;" ></div>
+</body>
+</html>
+
+<script>
+    var mCharts = echarts.init(document.querySelector('div'))
+    var qwe = ['刘','关','张','里','王','赵','陈',]
+    var asd = [100,80,90,70,60,80,50,]
+    var option = {
+        title:{
+           text: '成绩',
+           link:'http://www.baidu.com',
+        //    textStyle:{
+        //     color:'blue'
+        //    }
+        },
+        xAxis:{
+            type:'category',
+            data:qwe
+        },
+        yAxis:{
+            type:'value'
+        },
+        series:[
+            {
+                name:'语文',
+                type:'bar',
+                markPoint:{
+                    data:[
+                        {
+                            type:'max',name:'最大值'
+                        },{
+                            type:'min',name:'最小值'
+                        }
+
+                    ]
+                },
+                markLine:{
+                    data:[
+                        {
+                            type:'average',name :'平均值'
+                        }
+                    ]
+                },
+                label:{
+                    show:true,
+                    rotate:80,
+                    position:'top'
+                },
+                barWidth:'30%',
+                data:asd
+            }
+        ]
+    }
+    mCharts.setOption(option)
+</script>

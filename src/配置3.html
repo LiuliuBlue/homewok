@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置3</title>
+    <script src="./lit/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;" ></div>
+</body>
+
+</html>
+
+<script>
+    var mCharts = echarts.init(document.querySelector('div'))
+    var qwe = ['刘','关','张','李','王','赵','陈',]
+    var asd = [100,80,90,70,60,80,50,]
+    var asd2 = [80,90,85,75,90,85,75,]
+    var option = {
+        title:{
+           text: '惊喜',
+           link:'https://ny8802.xyz/',
+           textStyle:{
+            color:'blue'
+           }, 
+           borderWidth:5,
+           borderColor:'pink',
+           borderRadius:5,
+           left: 30,
+           top:25
+        },
+        tooltip:{
+            // trigger:'item'
+            trigger:'axis',
+            triggerOn:'click',
+            formatter:'{b}的成绩是{c}'
+
+        },
+        toolbox:{
+            feature:{
+               saveAsImage: {},
+               dataView:{},
+               restore:{},
+               dataZoom:{},
+               magicType:{
+                type:['bar','line']
+               }
+            }
+        },
+        legend:{
+            data:['语文','数学']
+        },
+        xAxis:{
+            type:'category',
+            data:qwe
+        },
+        yAxis:{
+            type:'value'
+        },
+        series:[
+            {
+                name:'语文',
+                type:'bar',
+                data:asd
+            },
+            {
+                name:'数学',
+                type:'bar',
+                data:asd2
+            }
+        ]
+    }
+    mCharts.setOption(option)
+</script>
