@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置3</title>
+    <script src="./lit/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;" ></div>
+</body>
+
+</html>
+
+<script>
+    var mCharts = echarts.init(document.querySelector('div'))
+    var dataarrx = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+    var dataarry = [1000,850,950,700,680,680,1550,600,1200,4500,5200,6300]
+    var option = {
+        // title:{
+        //    text: '惊喜',
+        //    link:'https://ny8802.xyz/',
+        //    textStyle:{
+        //     color:'blue'
+        //    }, 
+        //    borderWidth:5,
+        //    borderColor:'pink',
+        //    borderRadius:5,
+        //    left: 30,
+        //    top:25
+        // },
+       
+        xAxis:{
+            type:'category',
+            data:dataarrx
+        },
+        yAxis:{
+            type:'value'
+        },
+        series:[
+            {
+                name:'康师傅销量',
+                type:'line',
+                data:dataarry,
+                markPoint:{
+                    data:[
+                        {
+                            type:'max'
+                        },
+                        {
+                            type:'min'
+                        }
+                    ]
+                },
+                markLine:{
+                data:[
+                    {
+                        type:'average'
+                    }
+                ]
+            },
+            markArea:{
+                data:[
+                    [
+                        {
+                            xAxis:'1月'
+                        },
+                        {
+                            xAxis:'2月'
+                        }
+                    ],
+                    [
+                        {
+                            xAxis:'10月'
+                        },
+                        {
+                            xAxis:'12月'
+                        }
+                    ]
+                ]
+            },
+            smooth:true,
+            lineStyle:{
+                color:'blue',
+                type:'dotted'   //sloid dotted dashed
+                 
+            },
+            areaStyle:{      //曲线阴影
+                color:'blue'
+            }
+        },
+        ]
+    }
+    mCharts.setOption(optibon)
+</script>

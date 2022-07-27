@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配置6</title>
+    <script src="./lit/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;" ></div>
+</body>
+
+</html>
+
+<script>
+    var mCharts = echarts.init(document.querySelector('div'))
+    var dataarrx = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+    var dataarry = [1000,850,950,700,680,680,1550,600,1200,4500,5200,6300]
+    var dataarry2 = [2000,2550,9105,900,580,1080,1800,800,1800,3900,5500,5000]
+    var option = {
+
+       
+        xAxis:{
+            type:'category',
+            data:dataarrx,
+     
+        },
+        yAxis:{
+            type:'value',
+            // scale:true
+        },
+        series:[
+            {
+                type:'line',
+                data:dataarry,
+                stack:'all',    //直观比较
+                areaStyle:{}    //堆叠阴影
+            },
+            {
+                type:'line',
+                data:dataarry2,
+                stack:'all',
+                areaStyle:{}   //堆叠阴影
+
+            }
+        ]
+    }
+    mCharts.setOption(option)
+</script>

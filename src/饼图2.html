@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lit/echarts.min.js"></script>
+</head>
+<body>
+    <div style="width: 600px; height: 400px;" ></div>
+</body>
+</html>
+
+<script>
+    var mCharts = echarts.init(document.querySelector('div'))
+    var pieData = [
+        {
+            name:'淘宝',
+            value:11231
+        },
+        {
+            name:'京东',
+            value:22657
+        },
+        {
+            name:'唯品会',
+            value:6123
+        },
+        {
+            name:'1号店',
+            value:8989
+        },
+        {
+            name:'聚美优品',
+            value:6700
+        }
+    ]
+    var option = {
+      series:[
+        {
+            type:'pie',
+            data:pieData,
+            label:{
+                show :true,
+                // formatter:'hehe'
+                formatter:function(arg){
+                    console.log(arg);
+                    return arg.name + '平台'+arg.value+'元\n'+arg.percent+'%'
+                }
+            },
+            radius:['50%','75%'], //第一个元素是饼图内圈半径 第二个元素是外圈半径
+            // roseType:'radius',  //南丁格尔图
+            // selectedMode:'single' //选中的效果 能够偏离中心一点  multiple选中多个模块实现偏移
+        } 
+      ]  
+    }
+    mCharts.setOption(option)
+</script>
