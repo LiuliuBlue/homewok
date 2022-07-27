@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="lit/echarts.min.js"></script>
+    <script src="lit/jquery.min.js"></script>
+</head>
+
+<body>
+    <div style="width: 600px; height: 400px; border: 1px solid #f00"></div>
+
+    <script>
+        var mCharts = echarts.init(document.querySelector("div"));
+        var dataMax = [
+      {
+        name: '易用性',
+        max: 100
+      },
+      {
+        name: '功能',
+        max: 100
+      },
+      {
+        name: '拍照',
+        max: 100
+      },
+      {
+        name: '跑分',
+        max: 100
+      },
+      {
+        name: '续航',
+        max: 100
+      }
+    ]
+            
+         
+            var option = {
+               radar:{
+                indicator: dataMax,  //配置各个维度最大值
+                shape:'circle' //配置雷达图最外层的图形
+               },
+               series:[
+                {
+                    type:'radar', //此图表是一个雷达图
+                    label:{
+                        show:true  // 显示数值
+                    },
+                    areaStyle:{},   //将每一个产品的雷达图形成阴影的面积
+                    data:[
+                        {
+                            name:'华为手机',
+                            value:[80,90,80,82,90]
+                        },
+                        {
+                            name:'中兴手机',
+                            value:[70,82,75,70,78]
+                        }
+                    ]
+                }
+               ]
+            };
+           
+        mCharts.setOption(option);
+    </script>
+</body>
+
+</html>

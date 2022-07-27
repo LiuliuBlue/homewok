@@ -15,15 +15,15 @@
 
     <script>
         var mCharts = echarts.init(document.querySelector('div'))
-      $.get('json/map/china.json',function(ret){
+      $.get('json/map/henan.json',function(ret){
 
         // ref是中国矢量地图数据
     // console.log(ret);
-    echarts.registerMap('chinaMap', ret)
+    echarts.registerMap('henan', ret)
         var option = {
             geo: {
                 type: 'map',
-                map: 'chinaMap',
+                map: 'henan',
                 roam:true,  //缩放 拖动
                 label:{
                   show:true  //展示名称
